@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Page Not Found | Kodai Countryside Homestay</title>
+  <meta name="description" content="The page you were looking for isn't here. Head back to Kodai Countryside Homestay.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2D4A3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    .error-page {
+      min-height: 100svh;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-xl) var(--space-sm);
+      background: linear-gradient(135deg, var(--color-pine) 0%, #1e3a2e 100%);
+      color: var(--color-mist);
+    }
+    .error-page__number {
+      font-family: var(--font-heading);
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-weight: 700;
+      color: rgba(255,255,255,0.08);
+      line-height: 1;
+      margin-bottom: -2rem;
+    }
+    .error-page__title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      color: var(--color-white);
+      margin-bottom: var(--space-sm);
+    }
+    .error-page__desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 40ch;
+      margin-inline: auto;
+      margin-bottom: var(--space-lg);
+    }
+    .error-page__links {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .error-page__mist {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(74,124,89,0.25) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 20%, rgba(45,74,62,0.3) 0%, transparent 50%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="error-page__mist" aria-hidden="true"></div>
+
+  <main class="error-page" id="main-content">
+    <p class="error-page__number" aria-hidden="true">404</p>
+    <h1 class="error-page__title">Lost in the Mist</h1>
+    <p class="error-page__desc">The page you're looking for has drifted into the fog. Let's get you back on the trail.</p>
+    <nav class="error-page__links" aria-label="Return to site">
+      <a href="index.html" class="btn btn--primary btn--lg">Back to Home</a>
+      <a href="rooms.html" class="btn btn--outline-white btn--lg">The Property</a>
+      <a href="contact.html" class="btn btn--outline-white btn--lg">Contact Us</a>
+    </nav>
+  </main>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/site-init.js"></script>
+  <script src="assets/js/analytics.js" defer></script>
+</body>
+</html>

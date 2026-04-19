@@ -1,0 +1,146 @@
+/* ============================================================
+   RESPONSIVE.CSS — All media queries (mobile-first)
+   Kodai Countryside Homestay
+   ============================================================ */
+
+/* ── Tablet: 768px and up ───────────────────────────────────── */
+@media (min-width: 768px) {
+  /* Navigation */
+  .hamburger { display: none; }
+  .primary-nav { display: flex; }
+
+  /* Gallery masonry */
+  .gallery-grid { columns: 2; }
+
+  /* Footer grid */
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+/* ── Laptop: 1024px and up ──────────────────────────────────── */
+@media (min-width: 1024px) {
+  /* Gallery */
+  .gallery-grid { columns: 3; }
+
+  /* Footer */
+  .site-footer__grid {
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: var(--space-xl);
+  }
+}
+
+/* ── Desktop: 1280px and up ─────────────────────────────────── */
+@media (min-width: 1280px) {
+  .gallery-grid { columns: 4; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE OVERRIDES (max-width — applied on small screens)
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Below 768px (mobile) ───────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Nav */
+  .primary-nav { display: none; }
+  .hamburger   { display: flex; }
+
+  /* Hero */
+  .hero__stats-inner {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .hero__stat {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 0.6rem var(--space-sm);
+  }
+
+  .hero__stat:last-child { border-bottom: none; }
+
+  .hero__stat-value { font-size: 1.2rem; }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero__actions .btn { width: 100%; justify-content: center; }
+
+  /* Grids */
+  .grid-3 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+
+  /* Gallery: single column on phones */
+  .gallery-grid { columns: 1; }
+
+  /* Footer */
+  .site-footer__grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .site-footer__bottom { flex-direction: column; text-align: center; }
+
+  /* Forms */
+  .form-row { grid-template-columns: 1fr; }
+
+  /* CTA banner */
+  .cta-banner { padding: var(--space-lg) var(--space-md); }
+  .cta-banner__actions { flex-direction: column; }
+  .cta-banner__actions .btn { width: 100%; justify-content: center; }
+
+  /* Room card footer */
+  .room-card__footer { flex-direction: column; align-items: flex-start; }
+
+  /* Contact layout */
+  .contact-layout { grid-template-columns: 1fr; }
+
+  /* Page hero */
+  .page-hero { padding-top: calc(var(--space-xl) + 56px); }
+
+  /* WhatsApp FAB */
+  .whatsapp-fab { bottom: var(--space-md); right: var(--space-md); }
+
+  /* Section spacing */
+  .section    { padding-block: var(--space-lg); }
+  .section--lg { padding-block: var(--space-xl); }
+
+  /* Lightbox nav */
+  .lightbox__prev { left: var(--space-xs); }
+  .lightbox__next { right: var(--space-xs); }
+
+  /* Hero scroll hint — hide on small screens */
+  .hero__scroll-hint { display: none; }
+}
+
+/* ── Below 480px (small phones) ─────────────────────────────── */
+@media (max-width: 479px) {
+  .grid-4 { grid-template-columns: 1fr; }
+
+  .hero__title { font-size: 2.1rem; }
+
+  .filter-tabs { justify-content: flex-start; }
+
+  .hero__stats { display: none; }
+}
+
+/* ── Tablet portrait only: 480px–767px ──────────────────────── */
+@media (min-width: 480px) and (max-width: 767px) {
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { columns: 2; }
+}
+
+/* ── Print ──────────────────────────────────────────────────── */
+@media print {
+  .site-header,
+  .whatsapp-fab,
+  .hero__scroll-hint,
+  .site-footer { display: none; }
+
+  body { color: #000; background: #fff; }
+  a { text-decoration: underline; }
+  .hero { min-height: auto; page-break-after: always; }
+}

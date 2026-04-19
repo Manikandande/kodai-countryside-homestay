@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Gallery | Kodai Countryside Homestay Kodaikanal</title>
+  <meta name="description" content="Photos of misty mornings, cozy rooms, local food, and lush nature at Kodai Countryside Homestay in Kodaikanal, Tamil Nadu.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.kodayhomestay.com/gallery.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gallery | Kodai Countryside Homestay Kodaikanal">
+  <meta property="og:description" content="Photos of misty mornings, cozy rooms, and lush nature at Kodai Homestay.">
+  <meta property="og:image" content="https://www.kodayhomestay.com/assets/images/og/og-default.jpg">
+  <meta property="og:url" content="https://www.kodayhomestay.com/gallery.html">
+
+  <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2D4A3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;1,400&display=swap">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/gallery.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="index.html" class="site-logo" aria-label="Kodai Countryside Homestay — Home">
+        <img src="assets/icons/logo.svg" alt="" width="140" height="56" aria-hidden="true" class="site-logo__img">
+        <span class="site-logo__text"><span class="site-logo__name">Koday Countryside Homestay</span><span class="site-logo__tagline">A Private Retreat · Kodaikanal</span></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="rooms.html">The Property</a></li>
+          <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="nav-cta btn">Book a Stay</a>
+      </nav>
+      <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__bar"></span><span class="hamburger__bar"></span><span class="hamburger__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav-overlay" aria-hidden="true"></div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <button class="mobile-nav__close" aria-label="Close navigation"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <ul class="mobile-nav__links" role="list">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="rooms.html">The Property</a></li><li><a href="gallery.html" aria-current="page">Gallery</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="mobile-nav__cta">Book a Stay</a>
+  </nav>
+
+  <main id="main-content" class="page-main">
+
+    <!-- Page Hero -->
+    <div class="page-hero" style="background-image:url('assets/property Images/IMG_4914.jpeg');background-size:cover;background-position:center;" role="banner" aria-label="Photo Gallery">
+      <div class="container page-hero__content">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span class="breadcrumb__sep" aria-hidden="true">›</span><span class="breadcrumb__current">Gallery</span></nav>
+        <p class="label" style="color:rgba(255,255,255,0.6)">In pictures</p>
+        <h1>Kodai Through the Lens</h1>
+        <p class="lead">Every season, every mood — captured from the homestead.</p>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <section class="section section--cloud" aria-labelledby="gallery-heading">
+      <div class="container container--wide">
+        <h2 id="gallery-heading" class="sr-only">Photo Gallery</h2>
+
+        <!-- Filter tabs -->
+        <div class="gallery-filters" role="tablist" aria-label="Filter photos by category">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All Photos</button>
+          <button class="filter-tab" data-filter="exterior" role="tab" aria-selected="false">Exterior &amp; Garden</button>
+          <button class="filter-tab" data-filter="rooms" role="tab" aria-selected="false">Inside the Home</button>
+          <button class="filter-tab" data-filter="nearby" role="tab" aria-selected="false">Nearby Attractions</button>
+        </div>
+
+        <!-- Gallery grid — rendered dynamically from SITE_CONFIG.images.gallery by site-init.js -->
+        <div class="gallery-grid" data-filter="all" role="list" aria-label="Photo gallery"></div>
+
+        <div class="text-center mt-lg" data-reveal>
+          <p style="color:var(--color-smoke); font-size:0.9rem;">More photos added as guests share their stays with us.</p>
+          <a href="contact.html" class="btn btn--primary mt-md">Book Your Stay</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="footer-brand"><div class="footer-brand__logo"><a href="index.html" class="site-logo"><span class="site-logo__text"><span class="site-logo__name">Koday Countryside Homestay</span><span class="site-logo__tagline">A Private Retreat · Kodaikanal</span></span></a></div><p>A family home in the Palani Hills — open to guests who want something real.</p></div>
+        <nav class="footer-col" aria-label="Site navigation"><h4>Explore</h4><ul role="list"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="rooms.html">The Property</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+        <div class="footer-col"><h4>Quick Info</h4><ul role="list"><li><a href="rooms.html#policies">Check-in: 11 AM – 2 PM</a></li><li><a href="rooms.html#policies">Check-out: 7 AM – 10 AM</a></li><li><a href="rooms.html">2 Bedrooms · Entire Home</a></li><li><a href="rooms.html">Garden &amp; Gazebo</a></li></ul></div>
+        <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><div><p class="footer-contact-item__label">Phone / WhatsApp</p><p class="footer-contact-item__value"><a data-cfg="phone-href" href="tel:+919962355660"><span data-cfg="phone">+91 99623 55660</span></a></p></div></div><div class="footer-contact-item"><div><p class="footer-contact-item__label">Email</p><p class="footer-contact-item__value"><a data-cfg="email-href" href="mailto:stay@kodayhomestay.com"><span data-cfg="email">stay@kodayhomestay.com</span></a></p></div></div></div>
+      </div>
+      <div class="site-footer__bottom"><p>&copy; <span id="footer-year">2025</span> Kodai Countryside Homestay. All rights reserved.</p><p>Kodaikanal, Tamil Nadu, India · <a href="sitemap.xml">Sitemap</a></p></div>
+    </div>
+  </footer>
+
+  <a data-cfg="wa-fab" href="https://wa.me/919962355660?text=Hi%20Kodai!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/site-init.js"></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/gallery.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
+  <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

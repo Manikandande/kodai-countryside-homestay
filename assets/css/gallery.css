@@ -1,0 +1,199 @@
+/* ============================================================
+   GALLERY.CSS — Photo gallery, masonry grid, lightbox
+   Kodai Countryside Homestay
+   ============================================================ */
+
+/* ── Gallery Filter Bar ─────────────────────────────────────── */
+.gallery-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-lg);
+  justify-content: center;
+}
+
+/* ── Masonry Grid ───────────────────────────────────────────── */
+.gallery-grid {
+  columns: 4;
+  column-gap: var(--space-sm);
+  column-fill: balance;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: var(--space-sm);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  background-color: var(--color-mist);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+/* Hover overlay */
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 43, 34, 0);
+  transition: background var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-item:hover::after {
+  background: rgba(26, 43, 34, 0.35);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+/* Zoom icon on hover */
+.gallery-item__zoom {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.gallery-item:hover .gallery-item__zoom { opacity: 1; }
+
+.gallery-item__zoom svg {
+  width: 36px;
+  height: 36px;
+  color: var(--color-white);
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+}
+
+/* Gallery filter hiding */
+.gallery-grid[data-filter="nature"]    .gallery-item:not([data-category="nature"]),
+.gallery-grid[data-filter="rooms"]     .gallery-item:not([data-category="rooms"]),
+.gallery-grid[data-filter="food"]      .gallery-item:not([data-category="food"]),
+.gallery-grid[data-filter="activities"].gallery-item:not([data-category="activities"]) {
+  display: none;
+}
+
+/* ── Lightbox ───────────────────────────────────────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-dialog);
+  background: rgba(10, 18, 14, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox__inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  display: block;
+}
+
+.lightbox__caption {
+  margin-top: var(--space-sm);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+.lightbox__close {
+  position: fixed;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  font-size: 1.25rem;
+  transition: background var(--transition-fast);
+}
+
+.lightbox__close:hover { background: rgba(255, 255, 255, 0.2); }
+
+.lightbox__prev,
+.lightbox__next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.lightbox__prev { left: var(--space-md); }
+.lightbox__next { right: var(--space-md); }
+
+.lightbox__prev:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) translateX(-2px);
+}
+
+.lightbox__next:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) translateX(2px);
+}
+
+.lightbox__prev svg,
+.lightbox__next svg,
+.lightbox__close svg { width: 20px; height: 20px; }
+
+.lightbox__counter {
+  position: fixed;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.08em;
+}

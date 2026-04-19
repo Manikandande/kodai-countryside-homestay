@@ -1,0 +1,24 @@
+{
+  "name": "Koday Countryside Homestay",
+  "short_name": "Koday Homestay",
+  "description": "A family-run countryside retreat in Kodaikanal, Tamil Nadu — misty hills, valley views, and home-cooked warmth.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F7F6",
+  "theme_color": "#2D4A3E",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/assets/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

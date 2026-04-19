@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" role="img" aria-label="Kodai Countryside Homestay logo">
+  <title>Kodai Countryside Homestay</title>
+
+  <!-- Mountain silhouette with house -->
+  <g transform="translate(4, 8)">
+    <!-- Background mountain -->
+    <path d="M0 52 L18 18 L36 52 Z" fill="#4A7C59" opacity="0.55"/>
+    <!-- Foreground mountain -->
+    <path d="M14 52 L36 8 L58 52 Z" fill="#2D4A3E"/>
+    <!-- House on mountain peak -->
+    <rect x="30" y="14" width="12" height="8" fill="#F5F7F6" rx="1"/>
+    <polygon points="28,14 36,8 44,14" fill="#B85C38"/>
+    <!-- Chimney -->
+    <rect x="38" y="9" width="3" height="5" fill="#B85C38"/>
+    <!-- Mist line -->
+    <path d="M6 38 Q18 34 30 38 Q42 42 58 38" stroke="#E8EEF0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <!-- Wordmark -->
+  <!-- "Kodai" -->
+  <text x="72" y="38"
+    font-family="'Playfair Display', Georgia, serif"
+    font-size="26"
+    font-weight="700"
+    fill="#2D4A3E"
+    letter-spacing="0.5">Kodai</text>
+
+  <!-- Divider line -->
+  <line x1="72" y1="44" x2="194" y2="44" stroke="#E8EEF0" stroke-width="1"/>
+
+  <!-- "Countryside Homestay" -->
+  <text x="72" y="57"
+    font-family="'Inter', Arial, sans-serif"
+    font-size="9"
+    font-weight="500"
+    fill="#8A9B8E"
+    letter-spacing="2.5">COUNTRYSIDE HOMESTAY</text>
+</svg>

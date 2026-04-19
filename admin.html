@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — Kodai Countryside Homestay</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pine:        #2D4A3E;
+      --eucalyptus:  #4A7C59;
+      --terracotta:  #B85C38;
+      --bark:        #6B4F3A;
+      --cloud:       #F5F7F6;
+      --mist:        #E8EEF0;
+      --smoke:       #8A9B8E;
+      --night:       #1A2B22;
+      --white:       #FFFFFF;
+      --red:         #C0392B;
+      --green:       #27AE60;
+      --radius:      10px;
+      --shadow:      0 2px 16px rgba(0,0,0,0.10);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--mist);
+      color: var(--pine);
+      min-height: 100vh;
+      font-size: 0.95rem;
+    }
+
+    /* ── Login Screen ──────────────────────────────────────── */
+    .login-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .login-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-card__logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--pine);
+      margin-bottom: 0.25rem;
+    }
+
+    .login-card__sub {
+      font-size: 0.8rem;
+      color: var(--smoke);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+
+    .login-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--bark);
+    }
+
+    .login-error {
+      background: #fdecea;
+      color: var(--red);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    /* ── Layout ──────────────────────────────────────────────── */
+    .admin-wrap { display: none; min-height: 100vh; flex-direction: column; }
+
+    .admin-header {
+      background: var(--pine);
+      color: var(--white);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .admin-header__brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+    .admin-header__sub   { font-size: 0.7rem; opacity: 0.6; letter-spacing: 2px; }
+
+    .admin-header__actions { display: flex; gap: 0.75rem; align-items: center; }
+
+    .admin-body {
+      display: flex;
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    /* ── Sidebar nav ─────────────────────────────────────────── */
+    .sidebar {
+      width: 200px;
+      flex-shrink: 0;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .sidebar__link {
+      display: block;
+      padding: 0.85rem 1.25rem;
+      color: var(--pine);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-left: 3px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .sidebar__link:hover { background: var(--mist); }
+    .sidebar__link.active { background: var(--cloud); border-left-color: var(--eucalyptus); color: var(--eucalyptus); }
+
+    /* ── Main panel ──────────────────────────────────────────── */
+    .panel { flex: 1; }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--pine);
+      margin-bottom: 0.25rem;
+    }
+
+    .card__desc {
+      font-size: 0.83rem;
+      color: var(--smoke);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    /* ── Form elements ───────────────────────────────────────── */
+    .field-group { margin-bottom: 1.2rem; }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--bark);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    label small {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--smoke);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    input[type="url"],
+    textarea,
+    select {
+      display: block;
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1.5px solid var(--mist);
+      border-radius: 7px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--pine);
+      background: var(--cloud);
+      transition: border-color 0.15s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--eucalyptus);
+      background: var(--white);
+    }
+
+    input.is-placeholder { color: var(--smoke); font-style: italic; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* ── Buttons ─────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 7px;
+      border: 2px solid transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn--primary  { background: var(--eucalyptus); color: var(--white); }
+    .btn--pine     { background: var(--pine);        color: var(--white); }
+    .btn--terra    { background: var(--terracotta);  color: var(--white); }
+    .btn--outline  { background: transparent; color: var(--pine); border-color: var(--mist); }
+    .btn--danger   { background: transparent; color: var(--red);  border-color: #f5c6c2; }
+    .btn--ghost    { background: transparent; color: var(--smoke); border-color: transparent; }
+    .btn--sm       { padding: 0.45rem 1rem; font-size: 0.82rem; }
+    .btn--full     { width: 100%; justify-content: center; }
+
+    .btn--primary:hover { opacity: 0.88; }
+    .btn--pine:hover    { opacity: 0.88; }
+
+    /* ── Toast ───────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      padding: 0.85rem 1.5rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+      background: var(--pine);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+      z-index: 1000;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.error { background: var(--red); }
+
+    /* ── Status banner ───────────────────────────────────────── */
+    .status-bar {
+      background: #EAF4EC;
+      border: 1px solid #C3E0CA;
+      border-radius: 8px;
+      padding: 0.75rem 1.1rem;
+      font-size: 0.85rem;
+      color: #2D6A4F;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .status-bar.error { background: #fdecea; border-color: #f5c6c2; color: var(--red); }
+
+    /* ── Image manager ───────────────────────────────────────── */
+    .img-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+    .img-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+      background: var(--cloud);
+      border-radius: 8px;
+      padding: 0.75rem;
+    }
+
+    .img-item img {
+      width: 80px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 5px;
+      background: var(--mist);
+    }
+
+    .img-item__meta { min-width: 0; }
+    .img-item__label { font-weight: 600; font-size: 0.82rem; color: var(--pine); margin-bottom: 0.2rem; }
+    .img-item__src   { font-size: 0.75rem; color: var(--smoke); word-break: break-all; }
+
+    /* ── Export box ──────────────────────────────────────────── */
+    .export-box {
+      background: var(--night);
+      color: #A8D5B5;
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      border-radius: 8px;
+      padding: 1.25rem;
+      max-height: 320px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin-top: 1rem;
+    }
+
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--smoke);
+      padding: 0.6rem 1.25rem;
+      background: var(--mist);
+    }
+
+    .preview-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      color: var(--eucalyptus);
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 0.75rem;
+    }
+
+    .preview-link:hover { text-decoration: underline; }
+
+    .badge-live {
+      display: inline-block;
+      background: #EAF4EC;
+      color: #2D6A4F;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-placeholder {
+      display: inline-block;
+      background: #FFF3E0;
+      color: #E65100;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 50px;
+      letter-spacing: 0.5px;
+    }
+
+    hr { border: none; border-top: 1px solid var(--mist); margin: 1.25rem 0; }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .admin-body { flex-direction: column; padding: 0 1rem; }
+      .sidebar    { width: 100%; }
+      .sidebar__link { display: inline-block; padding: 0.6rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Login Screen ──────────────────────────────────────────── -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="login-card__logo">Kodai</div>
+    <div class="login-card__sub">Countryside Homestay</div>
+    <h2>Admin Panel Login</h2>
+    <div class="login-error" id="loginError">Incorrect password. Please try again.</div>
+    <div class="field-group">
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" placeholder="Enter admin password" autocomplete="current-password">
+    </div>
+    <button class="btn btn--pine btn--full" id="loginBtn">Sign In</button>
+    <p style="margin-top:1rem;font-size:0.78rem;color:var(--smoke);">
+      Default password: <strong>kodai2025</strong><br>
+      Change it in <code>assets/js/config.js</code> → <code>admin_password</code>
+    </p>
+  </div>
+</div>
+
+<!-- ── Admin Panel ──────────────────────────────────────────── -->
+<div class="admin-wrap" id="adminWrap">
+
+  <header class="admin-header">
+    <div>
+      <div class="admin-header__brand">Kodai Admin Panel</div>
+      <div class="admin-header__sub">Kodai Countryside Homestay</div>
+    </div>
+    <div class="admin-header__actions">
+      <a href="index.html" target="_blank" class="btn btn--outline btn--sm" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.2);">↗ View Site</a>
+      <button class="btn btn--outline btn--sm" id="logoutBtn" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.2);">Sign Out</button>
+    </div>
+  </header>
+
+  <div class="admin-body">
+
+    <!-- Sidebar -->
+    <nav class="sidebar" aria-label="Admin navigation">
+      <div class="section-title">Manage</div>
+      <a href="#" class="sidebar__link active" data-tab="contact">Contact Details</a>
+      <a href="#" class="sidebar__link" data-tab="images">Images</a>
+      <a href="#" class="sidebar__link" data-tab="settings">Site Settings</a>
+      <div class="section-title" style="margin-top:0.5rem;">Tools</div>
+      <a href="#" class="sidebar__link" data-tab="export">Export Config</a>
+    </nav>
+
+    <!-- Main panel -->
+    <div class="panel">
+
+      <!-- Toast -->
+      <div class="toast" id="toast"></div>
+
+      <!-- ── Tab: Contact ──────────────────────────────────── -->
+      <div class="tab-pane active" id="tab-contact">
+
+        <div class="card">
+          <h2>Contact Details</h2>
+          <p class="card__desc">Update your phone, email, WhatsApp, and address. Changes take effect immediately in your browser — click <strong>Save Changes</strong> to apply, then use <strong>Export Config</strong> to generate a file you can upload to replace <code>assets/js/config.js</code>.</p>
+
+          <div class="status-bar" id="contactStatus"></div>
+
+          <div class="form-row">
+            <div class="field-group">
+              <label for="phoneDisplay">Phone Number <small>(display)</small></label>
+              <input type="tel" id="phoneDisplay" placeholder="+91 98765 43210">
+            </div>
+            <div class="field-group">
+              <label for="phoneTel">Phone Number <small>(for links, no spaces)</small></label>
+              <input type="tel" id="phoneTel" placeholder="+919876543210">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="whatsappNum">WhatsApp Number <small>(country code + number, no +)</small></label>
+            <input type="tel" id="whatsappNum" placeholder="919876543210">
+          </div>
+
+          <div class="field-group">
+            <label for="emailAddr">Email Address</label>
+            <input type="email" id="emailAddr" placeholder="stay@yourdomain.com">
+          </div>
+
+          <hr>
+
+          <div class="field-group">
+            <label for="addrLine1">Street Address <small>(optional — shared on confirmation)</small></label>
+            <input type="text" id="addrLine1" placeholder="12, Coaker's Walk, Bryant's Park Road">
+          </div>
+
+          <div class="field-group">
+            <label for="addrCity">City / District / PIN</label>
+            <input type="text" id="addrCity" placeholder="Kodaikanal, Tamil Nadu — 624101">
+          </div>
+
+          <hr>
+
+          <div class="form-row">
+            <div class="field-group">
+              <label for="instagramHandle">Instagram Handle <small>(without @)</small></label>
+              <input type="text" id="instagramHandle" placeholder="kodaicountryside">
+            </div>
+            <div class="field-group">
+              <label for="facebookHandle">Facebook Page <small>(handle or page name)</small></label>
+              <input type="text" id="facebookHandle" placeholder="kodaicountryside">
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem;">
+            <button class="btn btn--primary" id="saveContactBtn">Save Changes</button>
+            <button class="btn btn--outline btn--danger" id="resetContactBtn">Reset to Defaults</button>
+          </div>
+
+          <a href="contact.html" target="_blank" class="preview-link">↗ Preview Contact Page</a>
+        </div>
+
+      </div>
+
+      <!-- ── Tab: Images ───────────────────────────────────── -->
+      <div class="tab-pane" id="tab-images">
+
+        <div class="card">
+          <h2>Hero &amp; Room Images</h2>
+          <p class="card__desc">Replace picsum placeholder URLs with your own image paths (e.g. <code>assets/images/hero/hero-home.webp</code>) or external URLs. Supported formats: WebP, JPG, PNG.</p>
+
+          <div class="img-list" id="heroImageList"></div>
+          <div style="margin-top:1rem;">
+            <button class="btn btn--primary btn--sm" id="saveHeroImgsBtn">Save Image Changes</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Gallery Photos</h2>
+          <p class="card__desc">Add, remove, or reorder gallery photos. Each photo needs a URL, description (alt text), and category.</p>
+
+          <div class="img-list" id="galleryList"></div>
+
+          <hr>
+          <p style="font-size:0.85rem;font-weight:600;margin-bottom:0.75rem;">Add New Gallery Photo</p>
+          <div class="form-row">
+            <div class="field-group">
+              <label for="newImgSrc">Full-size Image URL</label>
+              <input type="url" id="newImgSrc" placeholder="https://picsum.photos/seed/my-photo/800/600">
+            </div>
+            <div class="field-group">
+              <label for="newImgThumb">Thumbnail URL <small>(optional, same as full if blank)</small></label>
+              <input type="url" id="newImgThumb" placeholder="https://picsum.photos/seed/my-photo/400/300">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field-group">
+              <label for="newImgAlt">Description (alt text)</label>
+              <input type="text" id="newImgAlt" placeholder="Misty valley morning at Kodai Homestay">
+            </div>
+            <div class="field-group">
+              <label for="newImgCat">Category</label>
+              <select id="newImgCat">
+                <option value="nature">Nature &amp; Landscape</option>
+                <option value="rooms">Rooms</option>
+                <option value="food">Food</option>
+                <option value="activities">Experiences</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field-group">
+              <label for="newImgW">Width <small>(px)</small></label>
+              <input type="text" id="newImgW" placeholder="400" value="400">
+            </div>
+            <div class="field-group">
+              <label for="newImgH">Height <small>(px)</small></label>
+              <input type="text" id="newImgH" placeholder="300" value="300">
+            </div>
+          </div>
+          <button class="btn btn--primary btn--sm" id="addGalleryBtn">Add to Gallery</button>
+        </div>
+
+        <div class="card" style="background:#FFF8F0;border:1px solid #FFD8B5;">
+          <h2 style="color:var(--terracotta);">📸 How to Add Your Own Photos</h2>
+          <ol style="font-size:0.88rem;line-height:2;color:var(--bark);padding-left:1.2rem;">
+            <li>Prepare your photos: rename them descriptively (e.g. <code>misty-morning.jpg</code>)</li>
+            <li>Convert to WebP using <strong><a href="https://squoosh.app" target="_blank" rel="noopener">squoosh.app</a></strong> (free, browser-based) — WebP is smaller and faster</li>
+            <li>Copy the WebP files into the <code>assets/images/</code> subfolders on your computer</li>
+            <li>In the image fields above, replace the <code>https://picsum.photos/...</code> URLs with your local path like <code>assets/images/hero/hero-home.webp</code></li>
+            <li>Click <strong>Save Image Changes</strong>, then go to <strong>Export Config</strong> tab and download the new <code>config.js</code></li>
+            <li>Replace the file on your Netlify site (push to GitHub or drag-drop in Netlify dashboard)</li>
+          </ol>
+        </div>
+
+      </div>
+
+      <!-- ── Tab: Settings ─────────────────────────────────── -->
+      <div class="tab-pane" id="tab-settings">
+
+        <div class="card">
+          <h2>Site Settings</h2>
+          <p class="card__desc">Update these once you have your real domain name and Google Analytics account.</p>
+
+          <div class="field-group">
+            <label for="siteDomain">Domain Name <small>(no https://, no trailing slash)</small></label>
+            <input type="text" id="siteDomain" placeholder="www.kodaihomestay.com">
+          </div>
+
+          <div class="field-group">
+            <label for="ga4Id">Google Analytics 4 Measurement ID</label>
+            <input type="text" id="ga4Id" placeholder="G-XXXXXXXXXX">
+            <p style="font-size:0.78rem;color:var(--smoke);margin-top:0.35rem;">Get this from <strong>Google Analytics → Admin → Data Streams → Web → Measurement ID</strong></p>
+          </div>
+
+          <div class="field-group">
+            <label for="adminPassword">Admin Password <small>(change from the default!)</small></label>
+            <input type="password" id="adminPassword" placeholder="Enter new password">
+          </div>
+
+          <button class="btn btn--primary" id="saveSettingsBtn">Save Settings</button>
+        </div>
+
+        <div class="card">
+          <h2>Booking Policies</h2>
+          <p class="card__desc">These appear in the rooms page, FAQ, and contact page.</p>
+
+          <div class="form-row">
+            <div class="field-group">
+              <label for="checkinTime">Check-in Time</label>
+              <input type="text" id="checkinTime" placeholder="12:00 noon">
+            </div>
+            <div class="field-group">
+              <label for="checkoutTime">Check-out Time</label>
+              <input type="text" id="checkoutTime" placeholder="11:00 AM">
+            </div>
+          </div>
+
+          <button class="btn btn--primary btn--sm" id="savePoliciesBtn">Save Policies</button>
+        </div>
+
+      </div>
+
+      <!-- ── Tab: Export ───────────────────────────────────── -->
+      <div class="tab-pane" id="tab-export">
+
+        <div class="card">
+          <h2>Export config.js</h2>
+          <p class="card__desc">This generates a new <code>config.js</code> file with all your saved settings. Download it and replace the existing <code>assets/js/config.js</code> file in your project — then push to GitHub to update your live site.</p>
+
+          <button class="btn btn--pine" id="generateBtn">Generate config.js</button>
+          <button class="btn btn--primary" id="downloadBtn" style="display:none;margin-left:0.5rem;">⬇ Download config.js</button>
+
+          <div class="export-box" id="exportBox" style="display:none;"></div>
+
+          <hr>
+          <h2 style="margin-bottom:0.5rem;">How to Deploy Changes</h2>
+          <ol style="font-size:0.88rem;line-height:2;color:var(--bark);padding-left:1.2rem;">
+            <li>Click <strong>Generate config.js</strong> above and download it</li>
+            <li>Find the <code>assets/js/config.js</code> file in your project folder on your computer</li>
+            <li>Replace it with the downloaded file</li>
+            <li>Open Terminal and run: <code>git add assets/js/config.js &amp;&amp; git commit -m "Update site config" &amp;&amp; git push</code></li>
+            <li>Netlify will automatically rebuild and deploy your site in ~30 seconds</li>
+          </ol>
+        </div>
+
+        <div class="card">
+          <h2>Clear All Overrides</h2>
+          <p class="card__desc">This removes all saved changes from this browser and reverts the site preview back to the current <code>config.js</code> file values. Use this if you've already exported and deployed your config.</p>
+          <button class="btn btn--danger" id="clearOverridesBtn">Clear All Saved Changes</button>
+        </div>
+
+      </div>
+
+    </div><!-- /panel -->
+  </div><!-- /admin-body -->
+</div><!-- /admin-wrap -->
+
+<script src="assets/js/config.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var FILE_CFG    = window.SITE_CONFIG || {};
+  var STORAGE_KEY = 'kodai_admin_config';
+  var AUTH_KEY    = 'kodai_admin_auth';
+
+  /* ── Helpers ─────────────────────────────────────────────────── */
+  function deepMerge(base, override) {
+    var result = JSON.parse(JSON.stringify(base));
+    function merge(dst, src) {
+      Object.keys(src || {}).forEach(function (k) {
+        if (src[k] !== null && typeof src[k] === 'object' && !Array.isArray(src[k])) {
+          dst[k] = dst[k] || {};
+          merge(dst[k], src[k]);
+        } else {
+          dst[k] = src[k];
+        }
+      });
+    }
+    merge(result, override);
+    return result;
+  }
+
+  function loadCfg() {
+    var stored = {};
+    try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){}
+    return deepMerge(FILE_CFG, stored);
+  }
+
+  function saveOverride(patch) {
+    var stored = {};
+    try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){}
+    var merged = deepMerge(stored, patch);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+  }
+
+  function toast(msg, isError) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className   = 'toast' + (isError ? ' error' : '') + ' show';
+    setTimeout(function () { t.className = 'toast'; }, 3200);
+  }
+
+  /* ── Auth ────────────────────────────────────────────────────── */
+  var loginScreen = document.getElementById('loginScreen');
+  var adminWrap   = document.getElementById('adminWrap');
+
+  function checkAuth() {
+    var cfg = loadCfg();
+    var stored = sessionStorage.getItem(AUTH_KEY);
+    if (stored && stored === (cfg.admin_password || 'kodai2025')) {
+      showAdmin();
+    }
+  }
+
+  function showAdmin() {
+    loginScreen.style.display = 'none';
+    adminWrap.style.display   = 'flex';
+    adminWrap.style.flexDirection = 'column';
+    populateForms();
+  }
+
+  document.getElementById('loginBtn').addEventListener('click', doLogin);
+  document.getElementById('loginPassword').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') doLogin();
+  });
+
+  function doLogin() {
+    var cfg  = loadCfg();
+    var pass = document.getElementById('loginPassword').value;
+    var err  = document.getElementById('loginError');
+    if (pass === (cfg.admin_password || 'kodai2025')) {
+      sessionStorage.setItem(AUTH_KEY, pass);
+      err.style.display = 'none';
+      showAdmin();
+    } else {
+      err.style.display = 'block';
+      document.getElementById('loginPassword').value = '';
+      document.getElementById('loginPassword').focus();
+    }
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', function () {
+    sessionStorage.removeItem(AUTH_KEY);
+    location.reload();
+  });
+
+  /* ── Tab navigation ──────────────────────────────────────────── */
+  document.querySelectorAll('.sidebar__link[data-tab]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelectorAll('.sidebar__link').forEach(function (l) { l.classList.remove('active'); });
+      document.querySelectorAll('.tab-pane').forEach(function (p) { p.classList.remove('active'); });
+      link.classList.add('active');
+      document.getElementById('tab-' + link.dataset.tab).classList.add('active');
+    });
+  });
+
+  /* ── Populate forms ──────────────────────────────────────────── */
+  function populateForms() {
+    var cfg = loadCfg();
+    var c   = cfg.contact || {};
+    var s   = cfg.social  || {};
+    var st  = cfg.site    || {};
+    var img = cfg.images  || {};
+
+    setVal('phoneDisplay',   c.phone_display);
+    setVal('phoneTel',       c.phone_tel);
+    setVal('whatsappNum',    c.whatsapp_number);
+    setVal('emailAddr',      c.email);
+    setVal('addrLine1',      c.address_line1);
+    setVal('addrCity',       c.address_city);
+    setVal('instagramHandle',s.instagram);
+    setVal('facebookHandle', s.facebook);
+    setVal('siteDomain',     st.domain);
+    setVal('ga4Id',          st.ga4_id);
+    setVal('adminPassword',  '');
+    setVal('checkinTime',    c.checkin);
+    setVal('checkoutTime',   c.checkout);
+
+    renderHeroImages(img, cfg);
+    renderGallery(img.gallery || []);
+  }
+
+  function setVal(id, val) {
+    var el = document.getElementById(id);
+    if (el && val !== undefined && val !== null) el.value = val;
+  }
+
+  /* ── Hero image list ─────────────────────────────────────────── */
+  var HERO_KEYS = [
+    { key: 'hero_home',    label: 'Homepage Hero' },
+    { key: 'hero_rooms',   label: 'Rooms Page Hero' },
+    { key: 'hero_about',   label: 'About Page Hero' },
+    { key: 'room_valley_1',label: 'Valley View Room' },
+    { key: 'room_valley_2',label: 'Misty Meadow Room' },
+    { key: 'room_forest_1',label: 'Forest Suite' },
+    { key: 'room_forest_2',label: 'Hilltop Suite' },
+    { key: 'room_cottage', label: 'Family Cottage' },
+    { key: 'about_family', label: 'About — Family Photo' },
+    { key: 'about_exterior',label:'About — Property Exterior' },
+    { key: 'exp_fog',      label: 'Experience — Morning Fog' },
+    { key: 'exp_breakfast',label: 'Experience — Farm Breakfast' },
+    { key: 'exp_firepit',  label: 'Experience — Firepit Evening' },
+    { key: 'exp_stars',    label: 'Experience — Stargazing' }
+  ];
+
+  function isPlaceholder(src) {
+    return src && src.indexOf('picsum.photos') !== -1;
+  }
+
+  function renderHeroImages(img) {
+    var list = document.getElementById('heroImageList');
+    list.innerHTML = '';
+    HERO_KEYS.forEach(function (item) {
+      var src = img[item.key] || '';
+      var div = document.createElement('div');
+      div.className = 'img-item';
+      div.innerHTML =
+        '<img src="' + escHtml(src) + '" alt="" onerror="this.src=\'https://picsum.photos/seed/fallback/80/56\'">' +
+        '<div class="img-item__meta">' +
+          '<div class="img-item__label">' + escHtml(item.label) + ' ' +
+            (isPlaceholder(src) ? '<span class="badge-placeholder">Placeholder</span>' : '<span class="badge-live">Custom</span>') +
+          '</div>' +
+          '<input type="text" data-hero-key="' + item.key + '" value="' + escHtml(src) + '" style="font-size:0.78rem;padding:0.35rem 0.6rem;margin-top:0.25rem;" placeholder="Enter image URL or local path">' +
+        '</div>' +
+        '<div></div>';
+      list.appendChild(div);
+      var input = div.querySelector('input');
+      input.addEventListener('input', function () {
+        var imgEl = div.querySelector('img');
+        imgEl.src = input.value || 'https://picsum.photos/seed/fallback/80/56';
+      });
+    });
+  }
+
+  document.getElementById('saveHeroImgsBtn').addEventListener('click', function () {
+    var patch = { images: {} };
+    document.querySelectorAll('[data-hero-key]').forEach(function (el) {
+      patch.images[el.dataset.heroKey] = el.value;
+    });
+    saveOverride(patch);
+    toast('Image URLs saved! Go to Export Config to download the new config.js');
+    populateForms();
+  });
+
+  /* ── Gallery list ────────────────────────────────────────────── */
+  var galleryItems = [];
+
+  function renderGallery(items) {
+    galleryItems = JSON.parse(JSON.stringify(items));
+    var list = document.getElementById('galleryList');
+    list.innerHTML = '';
+    if (!galleryItems.length) {
+      list.innerHTML = '<p style="color:var(--smoke);font-size:0.85rem;">No gallery photos yet. Add one below.</p>';
+      return;
+    }
+    galleryItems.forEach(function (item, idx) {
+      var div = document.createElement('div');
+      div.className = 'img-item';
+      div.innerHTML =
+        '<img src="' + escHtml(item.thumb || item.src) + '" alt="" onerror="this.src=\'https://picsum.photos/seed/fallback/80/56\'">' +
+        '<div class="img-item__meta">' +
+          '<div class="img-item__label">' + escHtml(item.alt || 'Gallery Photo') + ' <span class="badge-placeholder">' + escHtml(item.category) + '</span></div>' +
+          '<div class="img-item__src">' + escHtml(item.src) + '</div>' +
+        '</div>' +
+        '<button class="btn btn--danger btn--sm" data-del-idx="' + idx + '">✕ Remove</button>';
+      list.appendChild(div);
+    });
+    list.querySelectorAll('[data-del-idx]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        galleryItems.splice(parseInt(btn.dataset.delIdx), 1);
+        saveOverride({ images: { gallery: galleryItems } });
+        renderGallery(galleryItems);
+        toast('Gallery photo removed');
+      });
+    });
+  }
+
+  document.getElementById('addGalleryBtn').addEventListener('click', function () {
+    var src   = document.getElementById('newImgSrc').value.trim();
+    var thumb = document.getElementById('newImgThumb').value.trim();
+    var alt   = document.getElementById('newImgAlt').value.trim();
+    var cat   = document.getElementById('newImgCat').value;
+    var w     = parseInt(document.getElementById('newImgW').value) || 400;
+    var h     = parseInt(document.getElementById('newImgH').value) || 300;
+
+    if (!src || !alt) { toast('Please enter an image URL and description', true); return; }
+
+    galleryItems.push({ src: src, thumb: thumb || src, alt: alt, category: cat, width: w, height: h });
+    saveOverride({ images: { gallery: galleryItems } });
+    renderGallery(galleryItems);
+
+    document.getElementById('newImgSrc').value   = '';
+    document.getElementById('newImgThumb').value = '';
+    document.getElementById('newImgAlt').value   = '';
+    toast('Photo added to gallery');
+  });
+
+  /* ── Save contact ────────────────────────────────────────────── */
+  document.getElementById('saveContactBtn').addEventListener('click', function () {
+    var patch = {
+      contact: {
+        phone_display:   document.getElementById('phoneDisplay').value.trim(),
+        phone_tel:       document.getElementById('phoneTel').value.trim(),
+        whatsapp_number: document.getElementById('whatsappNum').value.trim(),
+        email:           document.getElementById('emailAddr').value.trim(),
+        address_line1:   document.getElementById('addrLine1').value.trim(),
+        address_city:    document.getElementById('addrCity').value.trim()
+      },
+      social: {
+        instagram: document.getElementById('instagramHandle').value.trim(),
+        facebook:  document.getElementById('facebookHandle').value.trim()
+      }
+    };
+    saveOverride(patch);
+    toast('Contact details saved! Go to Export Config to download the new config.js');
+  });
+
+  document.getElementById('resetContactBtn').addEventListener('click', function () {
+    if (!confirm('Reset contact details to file defaults?')) return;
+    var stored = {};
+    try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+    delete stored.contact; delete stored.social;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
+    populateForms();
+    toast('Reset to config.js defaults');
+  });
+
+  /* ── Save settings ───────────────────────────────────────────── */
+  document.getElementById('saveSettingsBtn').addEventListener('click', function () {
+    var newPass = document.getElementById('adminPassword').value.trim();
+    var patch   = {
+      site: {
+        domain: document.getElementById('siteDomain').value.trim(),
+        ga4_id: document.getElementById('ga4Id').value.trim()
+      }
+    };
+    if (newPass) { patch.admin_password = newPass; }
+    saveOverride(patch);
+    if (newPass) { sessionStorage.setItem(AUTH_KEY, newPass); }
+    toast('Settings saved!');
+  });
+
+  document.getElementById('savePoliciesBtn').addEventListener('click', function () {
+    var patch = { contact: {
+      checkin:  document.getElementById('checkinTime').value.trim(),
+      checkout: document.getElementById('checkoutTime').value.trim()
+    }};
+    saveOverride(patch);
+    toast('Policies saved!');
+  });
+
+  /* ── Generate & Download config.js ──────────────────────────── */
+  var generatedContent = '';
+
+  document.getElementById('generateBtn').addEventListener('click', function () {
+    var cfg = loadCfg();
+    var c = cfg.contact || {};
+    var s = cfg.social  || {};
+    var st = cfg.site   || {};
+    var img = cfg.images || {};
+
+    var gallery = (img.gallery || []).map(function(item) {
+      return '      ' + JSON.stringify(item);
+    }).join(',\n');
+
+    generatedContent = '/* ============================================================\n' +
+      '   CONFIG.JS — Kodai Countryside Homestay\n' +
+      '   Generated: ' + new Date().toISOString() + '\n' +
+      '   ============================================================ */\n\n' +
+      'window.SITE_CONFIG = {\n' +
+      '  contact: {\n' +
+      '    phone_display:   ' + JSON.stringify(c.phone_display   || '') + ',\n' +
+      '    phone_tel:       ' + JSON.stringify(c.phone_tel       || '') + ',\n' +
+      '    whatsapp_number: ' + JSON.stringify(c.whatsapp_number || '') + ',\n' +
+      '    email:           ' + JSON.stringify(c.email           || '') + ',\n' +
+      '    address_line1:   ' + JSON.stringify(c.address_line1   || '') + ',\n' +
+      '    address_city:    ' + JSON.stringify(c.address_city    || '') + ',\n' +
+      '    checkin:         ' + JSON.stringify(c.checkin         || '12:00 noon') + ',\n' +
+      '    checkout:        ' + JSON.stringify(c.checkout        || '11:00 AM') + '\n' +
+      '  },\n' +
+      '  social: {\n' +
+      '    instagram: ' + JSON.stringify(s.instagram || '') + ',\n' +
+      '    facebook:  ' + JSON.stringify(s.facebook  || '') + ',\n' +
+      '    youtube:   ' + JSON.stringify(s.youtube   || '') + '\n' +
+      '  },\n' +
+      '  site: {\n' +
+      '    domain: ' + JSON.stringify(st.domain || '') + ',\n' +
+      '    ga4_id: ' + JSON.stringify(st.ga4_id || 'G-XXXXXXXXXX') + '\n' +
+      '  },\n' +
+      '  admin_password: ' + JSON.stringify(cfg.admin_password || 'kodai2025') + ',\n' +
+      '  images: {\n' +
+      '    hero_home:        ' + JSON.stringify(img.hero_home       || '') + ',\n' +
+      '    hero_rooms:       ' + JSON.stringify(img.hero_rooms      || '') + ',\n' +
+      '    hero_about:       ' + JSON.stringify(img.hero_about      || '') + ',\n' +
+      '    hero_gallery:     ' + JSON.stringify(img.hero_gallery    || '') + ',\n' +
+      '    room_valley_1:    ' + JSON.stringify(img.room_valley_1   || '') + ',\n' +
+      '    room_valley_2:    ' + JSON.stringify(img.room_valley_2   || '') + ',\n' +
+      '    room_forest_1:    ' + JSON.stringify(img.room_forest_1   || '') + ',\n' +
+      '    room_forest_2:    ' + JSON.stringify(img.room_forest_2   || '') + ',\n' +
+      '    room_cottage:     ' + JSON.stringify(img.room_cottage    || '') + ',\n' +
+      '    about_family:     ' + JSON.stringify(img.about_family    || '') + ',\n' +
+      '    about_exterior:   ' + JSON.stringify(img.about_exterior  || '') + ',\n' +
+      '    about_garden:     ' + JSON.stringify(img.about_garden    || '') + ',\n' +
+      '    exp_fog:          ' + JSON.stringify(img.exp_fog         || '') + ',\n' +
+      '    exp_breakfast:    ' + JSON.stringify(img.exp_breakfast   || '') + ',\n' +
+      '    exp_firepit:      ' + JSON.stringify(img.exp_firepit     || '') + ',\n' +
+      '    exp_stars:        ' + JSON.stringify(img.exp_stars       || '') + ',\n' +
+      '    gallery: [\n' + gallery + '\n    ]\n' +
+      '  }\n' +
+      '};\n';
+
+    var box = document.getElementById('exportBox');
+    box.textContent = generatedContent;
+    box.style.display = 'block';
+    document.getElementById('downloadBtn').style.display = '';
+  });
+
+  document.getElementById('downloadBtn').addEventListener('click', function () {
+    if (!generatedContent) return;
+    var blob = new Blob([generatedContent], { type: 'application/javascript' });
+    var url  = URL.createObjectURL(blob);
+    var a    = document.createElement('a');
+    a.href   = url;
+    a.download = 'config.js';
+    a.click();
+    URL.revokeObjectURL(url);
+    toast('config.js downloaded! Replace assets/js/config.js with this file.');
+  });
+
+  document.getElementById('clearOverridesBtn').addEventListener('click', function () {
+    if (!confirm('Clear all saved changes from this browser? This cannot be undone.')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    populateForms();
+    toast('All overrides cleared. Showing config.js file defaults.');
+  });
+
+  function escHtml(str) {
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ── Boot ──────────────────────────────────────────────────── */
+  checkAuth();
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>The Property | Kodai Countryside Homestay — Private 2-Bedroom Bungalow, Kodaikanal</title>
+  <meta name="description" content="Explore the entire Kodai Countryside Homestay — a private 2-bedroom family bungalow in Kodaikanal with garden, gazebo, shared kitchen, lounge and mountain views. Book the whole home.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.kodayhomestay.com/rooms.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The Property | Kodai Countryside Homestay — Private 2-Bedroom Bungalow">
+  <meta property="og:description" content="A private 2-bedroom family bungalow in Kodaikanal — garden, gazebo, shared kitchen, lounge and mountain views. Book the whole home.">
+  <meta property="og:image" content="https://www.kodayhomestay.com/assets/images/og/og-default.jpg">
+  <meta property="og:url" content="https://www.kodayhomestay.com/rooms.html">
+  <meta property="og:locale" content="en_IN">
+
+  <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#2D4A3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;1,400&display=swap">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.kodayhomestay.com/"},
+      {"@type": "ListItem", "position": 2, "name": "The Property", "item": "https://www.kodayhomestay.com/rooms.html"}
+    ]
+  }
+  </script>
+
+  <style>
+    /* ── Space strip ── */
+    .space-strip { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2xl); align-items: center; padding: var(--space-2xl) 0; border-bottom: 1px solid var(--color-border, #e0e6e4); }
+    .space-strip:last-child { border-bottom: none; }
+    .space-strip--reverse { direction: rtl; }
+    .space-strip--reverse > * { direction: ltr; }
+    .space-strip__photos { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm); }
+    .space-strip__photos--single { grid-template-columns: 1fr; }
+    .space-strip__photo { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4/3; }
+    .space-strip__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .space-strip__photo--tall { aspect-ratio: 3/4; }
+    .space-strip__text { padding: var(--space-lg); }
+    .space-strip__eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-eucalyptus); margin-bottom: var(--space-sm); }
+    .space-strip__title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--color-bark); margin-bottom: var(--space-md); }
+    .space-strip__desc { color: var(--color-smoke); line-height: 1.8; margin-bottom: var(--space-md); }
+    .space-strip__tags { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+
+    /* ── Amenity grid ── */
+    .amenity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); }
+    .amenity-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.5rem; padding: var(--space-md); background: var(--color-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+    .amenity-card svg { color: var(--color-eucalyptus); }
+    .amenity-card span { font-size: 0.85rem; font-weight: 500; color: var(--color-pine); }
+
+    /* ── Policies ── */
+    .policies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md); max-width: 900px; margin-inline: auto; }
+    .policy-card { background: var(--color-white); padding: var(--space-md); border-radius: var(--radius-md); border-left: 3px solid var(--color-eucalyptus); }
+    .policy-card h4 { font-size: 0.9rem; color: var(--color-bark); margin-bottom: 0.3rem; }
+    .policy-card p { font-size: 0.85rem; color: var(--color-smoke); }
+
+    /* ── Enquiry note ── */
+    .enquiry-note { text-align: center; background: var(--color-pine); color: #fff; border-radius: var(--radius-xl); padding: var(--space-2xl) var(--space-xl); }
+    .enquiry-note h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-bottom: var(--space-md); }
+    .enquiry-note p { opacity: 0.8; margin-bottom: var(--space-lg); max-width: 540px; margin-inline: auto; }
+
+    /* ── Responsive ── */
+    @media (max-width: 767px) {
+      .space-strip { grid-template-columns: 1fr; direction: ltr; }
+      .space-strip--reverse { direction: ltr; }
+      .amenity-grid { grid-template-columns: 1fr 1fr; }
+      .policies-grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .amenity-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container site-header__inner">
+      <a href="index.html" class="site-logo" aria-label="Kodai Countryside Homestay — Home">
+        <img src="assets/icons/logo.svg" alt="" width="140" height="56" aria-hidden="true" class="site-logo__img">
+        <span class="site-logo__text"><span class="site-logo__name">Koday Countryside Homestay</span><span class="site-logo__tagline">A Private Retreat · Kodaikanal</span></span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-links" role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="rooms.html" aria-current="page">The Property</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="nav-cta btn">Book a Stay</a>
+      </nav>
+      <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+        <span class="hamburger__bar"></span><span class="hamburger__bar"></span><span class="hamburger__bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav-overlay" aria-hidden="true"></div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" aria-hidden="true">
+    <button class="mobile-nav__close" aria-label="Close navigation"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <ul class="mobile-nav__links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="rooms.html" aria-current="page">The Property</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="mobile-nav__cta">Book a Stay</a>
+  </nav>
+
+  <main id="main-content" class="page-main">
+
+    <!-- Page Hero -->
+    <div class="page-hero" style="background-image:url('assets/property Images/IMG_3472.JPEG');background-size:cover;background-position:center;" role="banner" aria-label="Kodai Countryside Homestay property">
+      <div class="container page-hero__content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb__sep" aria-hidden="true">›</span>
+          <span class="breadcrumb__current">The Property</span>
+        </nav>
+        <p class="label" style="color:rgba(255,255,255,0.65)">Entire home · Just you</p>
+        <h1>The Property</h1>
+        <p class="lead">A private 2-bedroom family bungalow nestled in the Palani Hills — with a garden, gazebo, full kitchen, and room enough to truly unwind.</p>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:var(--space-lg);">
+          <span style="color:#fff;font-size:0.9rem;opacity:0.9;">🛏 2 Bedrooms</span>
+          <span style="color:#fff;font-size:0.9rem;opacity:0.9;">🚿 2 Bathrooms</span>
+          <span style="color:#fff;font-size:0.9rem;opacity:0.9;">👨‍👩‍👧 Entire Home · Exclusively Yours</span>
+          <span style="color:#fff;font-size:0.9rem;opacity:0.9;">🌿 Garden &amp; Gazebo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intro -->
+    <section class="section section--cloud">
+      <div class="container" style="max-width:800px;text-align:center;" data-reveal>
+        <p class="label">What you're getting</p>
+        <h2 style="font-family:'Playfair Display',serif;margin-bottom:var(--space-md);">The Whole Home. Only You.</h2>
+        <p style="color:var(--color-smoke);line-height:1.9;font-size:1.05rem;">
+          When you book Kodai Countryside Homestay, you get the entire bungalow — not just a room. Two bedrooms, two bathrooms, a living room, dining area, fully equipped shared kitchen, and a lush garden with a gazebo. No other guests. No shared corridors. Just your family, your pace, your holiday.
+        </p>
+      </div>
+    </section>
+
+    <!-- Space: Bedroom 1 -->
+    <section class="section section--mist" aria-labelledby="bedroom1-heading">
+      <div class="container">
+        <div class="space-strip" data-reveal>
+          <div class="space-strip__photos">
+            <div class="space-strip__photo space-strip__photo--tall">
+              <img src="assets/property Images/IMG_3993.JPEG" alt="Bedroom 1 — spacious double bed with carved wooden headboard and green accent wall" width="600" height="800" loading="lazy" decoding="async">
+            </div>
+            <div class="space-strip__photo">
+              <img src="assets/property Images/IMG_3994.jpeg" alt="Bedroom 1 — second single bed with built-in overhead storage" width="600" height="450" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="space-strip__text">
+            <p class="space-strip__eyebrow">Bedroom 1</p>
+            <h2 class="space-strip__title" id="bedroom1-heading">The Garden Room</h2>
+            <p class="space-strip__desc">
+              A serene, generously sized room with traditional carved wooden furniture and a calming green palette. Fitted with a double bed and a single bed — perfect for a couple or a small family. Natural light pours in through large windows overlooking the garden.
+            </p>
+            <div class="space-strip__tags">
+              <span class="amenity-tag">Double + Single Bed</span>
+              <span class="amenity-tag">Carved Wooden Furniture</span>
+              <span class="amenity-tag">Garden View</span>
+              <span class="amenity-tag">Built-in Storage</span>
+              <span class="amenity-tag">Natural Light</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Space: Bedroom 2 -->
+    <section class="section section--cloud" aria-labelledby="bedroom2-heading">
+      <div class="container">
+        <div class="space-strip space-strip--reverse" data-reveal>
+          <div class="space-strip__photos">
+            <div class="space-strip__photo">
+              <img src="assets/property Images/IMG_3998.JPEG" alt="Bedroom 2 — double bed with rich blue accent wall and warm lighting" width="600" height="450" loading="lazy" decoding="async">
+            </div>
+            <div class="space-strip__photo">
+              <img src="assets/property Images/IMG_4001.JPEG" alt="Bedroom 2 — overhead storage cabinets and blue curtained windows" width="600" height="450" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="space-strip__text">
+            <p class="space-strip__eyebrow">Bedroom 2</p>
+            <h2 class="space-strip__title" id="bedroom2-heading">The Hill Room</h2>
+            <p class="space-strip__desc">
+              A bold, beautiful room dressed in deep blue with generous overhead cabinets and a double bed. The windows let in cool mountain air and soft light throughout the day. A great sleeping room — restful, quiet, and comfortable for a couple.
+            </p>
+            <div class="space-strip__tags">
+              <span class="amenity-tag">Double Bed</span>
+              <span class="amenity-tag">Built-in Overhead Cabinets</span>
+              <span class="amenity-tag">Blue Accent Walls</span>
+              <span class="amenity-tag">Mountain Air</span>
+              <span class="amenity-tag">Wardrobe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Space: Living Room -->
+    <section class="section section--mist" aria-labelledby="living-heading">
+      <div class="container">
+        <div class="space-strip" data-reveal>
+          <div class="space-strip__photos">
+            <div class="space-strip__photo">
+              <img src="assets/property Images/IMG_4035.JPEG" alt="Living room with traditional carved wooden sofa set and warm décor" width="800" height="600" loading="lazy" decoding="async">
+            </div>
+            <div class="space-strip__photo">
+              <img src="assets/property Images/IMG_4049.JPEG" alt="Living area with TV unit, sofa and warm yellow accent wall" width="800" height="600" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="space-strip__text">
+            <p class="space-strip__eyebrow">Common Space</p>
+            <h2 class="space-strip__title" id="living-heading">The Lounge</h2>
+            <p class="space-strip__desc">
+              A warm, welcoming living room centred around a beautifully carved wooden sofa set — the heart of the home. Curl up with a book, gather the family for a movie, or simply sit and enjoy the cool Kodaikanal evenings. The TV lounge area is right next door.
+            </p>
+            <div class="space-strip__tags">
+              <span class="amenity-tag">Carved Wooden Sofa Set</span>
+              <span class="amenity-tag">TV Lounge</span>
+              <span class="amenity-tag">Family Gathering Space</span>
+              <span class="amenity-tag">Warm Ambiance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Space: Dining + Kitchen -->
+    <section class="section section--cloud" aria-labelledby="kitchen-heading">
+      <div class="container">
+        <div class="space-strip space-strip--reverse" data-reveal>
+          <div class="space-strip__photos">
+            <div class="space-strip__photo">
+              <img src="assets/property Images/IMG_4047.JPEG" alt="Dining area with glass-top table and wooden chairs" width="800" height="600" loading="lazy" decoding="async">
+            </div>
+            <div class="space-strip__photo">
+              <img src="assets/property Images/IMG_4052.JPEG" alt="Fully equipped shared kitchen with wooden cabinets and modern appliances" width="800" height="600" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="space-strip__text">
+            <p class="space-strip__eyebrow">Dining &amp; Kitchen</p>
+            <h2 class="space-strip__title" id="kitchen-heading">Cook. Eat. Linger.</h2>
+            <p class="space-strip__desc">
+              A proper dining area with a glass-top table and wooden chairs — just right for a family breakfast or a candlelit dinner. Adjacent is the fully equipped shared kitchen with wooden cabinets, a gas stove, and all the essentials you need to cook your favourite meals.
+            </p>
+            <div class="space-strip__tags">
+              <span class="amenity-tag">Glass-top Dining Table</span>
+              <span class="amenity-tag">Shared Kitchen</span>
+              <span class="amenity-tag">Gas Stove</span>
+              <span class="amenity-tag">Wooden Cabinets</span>
+              <span class="amenity-tag">Modern Appliances</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Space: Garden & Outdoor -->
+    <section class="section section--mist" aria-labelledby="garden-heading">
+      <div class="container">
+        <div class="space-strip" data-reveal>
+          <div class="space-strip__photos">
+            <div class="space-strip__photo space-strip__photo--tall">
+              <img src="assets/property Images/IMG_3470.JPEG" alt="Garden patio with outdoor gazebo and lush greenery, mountain backdrop" width="600" height="800" loading="lazy" decoding="async">
+            </div>
+            <div class="space-strip__photo">
+              <img src="assets/property Images/IMG_3472.JPEG" alt="Gazebo seating area with views of green Kodaikanal hills" width="600" height="450" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="space-strip__text">
+            <p class="space-strip__eyebrow">Outdoor Spaces</p>
+            <h2 class="space-strip__title" id="garden-heading">Garden, Gazebo &amp; More</h2>
+            <p class="space-strip__desc">
+              Step outside and breathe. A beautifully maintained garden wraps around the bungalow, bursting with flowers and greenery. Sit under the gazebo with your morning chai, light the outdoor fireplace in the evening, and enjoy a BBQ under the stars. The mountains are always in view.
+            </p>
+            <div class="space-strip__tags">
+              <span class="amenity-tag">Landscaped Garden</span>
+              <span class="amenity-tag">Gazebo Seating</span>
+              <span class="amenity-tag">Outdoor Fireplace</span>
+              <span class="amenity-tag">BBQ</span>
+              <span class="amenity-tag">Mountain Views</span>
+              <span class="amenity-tag">Balcony</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Amenities -->
+    <section class="section section--cloud" aria-labelledby="amenities-heading">
+      <div class="container">
+        <div class="section__header centered" data-reveal>
+          <p class="label">Everything included</p>
+          <h2 id="amenities-heading">What the Home Offers</h2>
+        </div>
+        <div class="amenity-grid" role="list">
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            <span>Free Wi-Fi</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Free Parking</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Shared Kitchen</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v4H4z"/><path d="M4 12h16v4H4z"/><path d="M4 20h16"/><circle cx="6" cy="6" r="1"/><circle cx="6" cy="14" r="1"/></svg>
+            <span>2 Bathrooms</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Outdoor Fireplace</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+            <span>Landscaped Garden</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            <span>BBQ Grill</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>24hr Security</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Private Check-in</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16"/><path d="M16 6v16"/></svg>
+            <span>Mountain Views</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l9-14 9 14H3z"/></svg>
+            <span>Balcony</span>
+          </div>
+
+          <div class="amenity-card" data-reveal role="listitem">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <span>Outdoor Seating</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Policies -->
+    <section class="section section--mist" id="policies" aria-labelledby="policies-heading">
+      <div class="container">
+        <div class="section__header centered" data-reveal>
+          <p class="label">Good to know</p>
+          <h2 id="policies-heading">House Policies</h2>
+        </div>
+        <div class="policies-grid">
+          <div class="policy-card" data-reveal>
+            <h4>Check-in</h4>
+            <p>Check-in time is <strong>11:00 AM – 2:00 PM</strong>. We offer private, self-guided check-in for your convenience. Please let us know your arrival time in advance.</p>
+          </div>
+          <div class="policy-card" data-reveal>
+            <h4>Check-out</h4>
+            <p>Check-out time is <strong>7:00 AM – 10:00 AM</strong>. Early or late arrangements can be discussed — just reach out to us ahead of your stay.</p>
+          </div>
+          <div class="policy-card" data-reveal>
+            <h4>No Smoking</h4>
+            <p>Smoking is strictly not permitted inside the home. Guests who wish to smoke may do so in designated outdoor areas only.</p>
+          </div>
+          <div class="policy-card" data-reveal>
+            <h4>No Parties or Events</h4>
+            <p>Parties, events, and large gatherings are not permitted on the property. This is a family home and a peaceful retreat for all guests.</p>
+          </div>
+          <div class="policy-card" data-reveal>
+            <h4>Quiet Hours</h4>
+            <p>Quiet hours are observed from <strong>11:00 PM to 5:00 AM</strong> out of respect for the neighbourhood and the natural environment.</p>
+          </div>
+          <div class="policy-card" data-reveal>
+            <h4>Pets</h4>
+            <p>1 pet is allowed with prior approval. Pets are welcome in the living room and garden but not on sofas or beds. Any property damage caused by pets will be charged accordingly.</p>
+          </div>
+          <div class="policy-card" data-reveal>
+            <h4>ID Required</h4>
+            <p>A valid government-issued photo ID is required from all adult guests at check-in as per local regulations.</p>
+          </div>
+          <div class="policy-card" data-reveal>
+            <h4>Children &amp; Minors</h4>
+            <p>Children of all ages are warmly welcome. Guests under 18 years must be accompanied by a parent or legal guardian throughout their stay.</p>
+          </div>
+          <div class="policy-card" data-reveal>
+            <h4>Keys</h4>
+            <p>Keys are provided by the caretaker at check-in. Please lock the home when stepping out. Keys must be returned upon departure — lost keys incur a replacement charge.</p>
+          </div>
+          <div class="policy-card" data-reveal>
+            <h4>Food &amp; Kitchen</h4>
+            <p>Food can be arranged on request through the caretaker (charges apply). The kitchen is available for self-catering. Additional charges apply for kitchen utensil cleaning and room service.</p>
+          </div>
+        </div>
+        <p style="text-align:center;margin-top:var(--space-lg);color:var(--color-smoke);font-size:0.9rem;">Have more questions? Visit our <a href="faq.html" style="color:var(--color-eucalyptus);">FAQ page</a>.</p>
+      </div>
+    </section>
+
+    <!-- Enquiry CTA -->
+    <section class="section section--cloud">
+      <div class="container">
+        <div class="enquiry-note" data-reveal>
+          <p class="label" style="color:rgba(255,255,255,0.55)">Pricing by enquiry</p>
+          <h2>Interested? Let's Talk.</h2>
+          <p>We don't list fixed rates online — every stay is personal and we'd love to talk about what you're looking for. Drop us a WhatsApp message and we'll get back to you promptly.</p>
+          <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap;">
+            <a data-cfg="wa-booking" href="https://wa.me/919962355660?text=Hi!%20I%27d%20like%20to%20enquire%20about%20a%20stay%20at%20Kodai%20Countryside%20Homestay." class="btn btn--terracotta btn--lg" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            <a href="contact.html" class="btn btn--outline-white btn--lg">Send Enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="footer-brand">
+          <div class="footer-brand__logo">
+            <a href="index.html" class="site-logo">
+              <span class="site-logo__text"><span class="site-logo__name">Koday Countryside Homestay</span><span class="site-logo__tagline">A Private Retreat · Kodaikanal</span></span>
+            </a>
+          </div>
+          <p>A family home in the Palani Hills — open to guests who want something real.</p>
+        </div>
+        <nav class="footer-col" aria-label="Site navigation">
+          <h4>Explore</h4>
+          <ul role="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="rooms.html">The Property</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="footer-col">
+          <h4>Quick Info</h4>
+          <ul role="list">
+            <li><a href="#policies">Check-in: 11 AM – 2 PM</a></li>
+            <li><a href="#policies">Check-out: 7 AM – 10 AM</a></li>
+            <li><a href="rooms.html">2 Bedrooms · Entire Home</a></li>
+            <li><a href="rooms.html">Garden &amp; Gazebo</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <div>
+              <p class="footer-contact-item__label">Phone / WhatsApp</p>
+              <p class="footer-contact-item__value"><a data-cfg="phone-href" href="tel:+919962355660"><span data-cfg="phone">+91 99623 55660</span></a></p>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <div>
+              <p class="footer-contact-item__label">Email</p>
+              <p class="footer-contact-item__value"><a data-cfg="email-href" href="mailto:stay@kodayhomestay.com"><span data-cfg="email">stay@kodayhomestay.com</span></a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer__bottom">
+        <p>&copy; <span id="footer-year">2025</span> Kodai Countryside Homestay. All rights reserved.</p>
+        <p>Kodaikanal, Tamil Nadu, India · <a href="sitemap.xml">Sitemap</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a data-cfg="wa-fab" href="https://wa.me/919962355660?text=Hi%20Kodai!" class="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/site-init.js"></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/analytics.js" defer></script>
+  <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
