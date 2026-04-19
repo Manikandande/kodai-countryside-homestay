@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 60" role="img" aria-hidden="true">
+  <!-- Background mountain -->
+  <path d="M0 56 L18 22 L36 56 Z" fill="#4A7C59" opacity="0.55"/>
+  <!-- Foreground mountain -->
+  <path d="M12 56 L34 4 L56 56 Z" fill="#2D4A3E"/>
+  <!-- House wall -->
+  <rect x="28" y="14" width="12" height="9" fill="#F5F7F6" rx="1"/>
+  <!-- Roof -->
+  <polygon points="26,15 34,6 42,15" fill="#B85C38"/>
+  <!-- Chimney -->
+  <rect x="37" y="7" width="3" height="6" fill="#B85C38"/>
+  <!-- Mist line -->
+  <path d="M6 38 Q18 34 32 38 Q46 42 60 38" stroke="#E8EEF0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.75"/>
+</svg>
