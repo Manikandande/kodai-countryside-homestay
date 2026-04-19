@@ -136,6 +136,8 @@
         fig.appendChild(zoom);
         grid.appendChild(fig);
       });
+      /* Notify gallery.js that items are ready */
+      window.dispatchEvent(new Event('gallery-populated'));
     }
   });
 

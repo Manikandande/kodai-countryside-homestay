@@ -170,14 +170,18 @@
   }
 
   /* ── Init ─────────────────────────────────────────────────── */
-  if (document.readyState !== 'loading') {
+  /* Wait for site-init.js to populate the gallery grid first,
+     then initialise filter + lightbox on the populated items. */
+  window.addEventListener('gallery-populated', function () {
     initGalleryFilter();
     initLightbox();
-  } else {
-    document.addEventListener('DOMContentLoaded', function () {
+  });
+
+  /* Fallback: if no gallery grid on this page, still init filter tabs */
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!document.querySelector('.gallery-grid')) {
       initGalleryFilter();
-      initLightbox();
-    });
-  }
+    }
+  });
 
 })();
