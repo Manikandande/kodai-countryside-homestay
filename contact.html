@@ -108,19 +108,11 @@
             <!-- form-status div for success/error messages -->
             <div class="form-status" role="alert" aria-live="polite" style="display:none;"></div>
 
-            <!-- Netlify Forms: the netlify attribute and hidden form-name field handle backend -->
             <form
               class="booking-form"
+              id="booking-form"
               name="booking-enquiry"
-              method="POST"
-              data-netlify="true"
-              netlify-honeypot="bot-field"
-              action="/contact.html?success=true"
               novalidate>
-
-              <!-- Honeypot field (hidden from users, catches bots) -->
-              <input type="hidden" name="form-name" value="booking-enquiry">
-              <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
 
               <div class="form-row">
                 <div class="form-group">
@@ -182,7 +174,7 @@
               </div>
 
               <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap; align-items:center; margin-top:var(--space-sm);">
-                <button type="submit" class="btn btn--primary btn--lg">Send Enquiry</button>
+                <button type="submit" class="btn btn--primary btn--lg">Send via WhatsApp</button>
                 <a href="#" class="btn btn--ghost whatsapp-enquiry-btn" target="_blank" rel="noopener noreferrer"
                    aria-label="Send this enquiry via WhatsApp instead">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
@@ -282,7 +274,7 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="site-footer__grid">
-        <div class="footer-brand"><div class="footer-brand__logo"><a href="index.html" class="site-logo"><span class="site-logo__text"><span class="site-logo__name">Kodai Countryside Homestay</span><span class="site-logo__tagline">A Private Retreat · Kodaikanal</span></span></a></div><p>A family home in the Palani Hills — open to guests who want something real.</p></div>
+        <div class="footer-brand"><div class="footer-brand__logo"><a href="index.html" class="site-logo"><span class="site-logo__text"><span class="site-logo__name">Kodai Countryside Homestay</span><span class="site-logo__tagline">A Private Retreat · Kodaikanal</span></span></a></div><p>A family home in the Kodaikanal hills — open to guests who want something real.</p></div>
         <nav class="footer-col" aria-label="Site navigation"><h4>Explore</h4><ul role="list"><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="rooms.html">The Property</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
         <div class="footer-col"><h4>Quick Info</h4><ul role="list"><li><a href="rooms.html#policies">Check-in: 11 AM – 2 PM</a></li><li><a href="rooms.html#policies">Check-out: 7 AM – 10 AM</a></li><li><a href="rooms.html">2 Bedrooms · Entire Home</a></li><li><a href="rooms.html">Garden &amp; Gazebo</a></li></ul></div>
         <div class="footer-col"><h4>Contact</h4><div class="footer-contact-item"><div><p class="footer-contact-item__label">Phone / WhatsApp</p><p class="footer-contact-item__value"><a data-cfg="phone-href" href="tel:+919962355660"><span data-cfg="phone">+91 99623 55660</span></a></p></div></div><div class="footer-contact-item"><div><p class="footer-contact-item__label">Email</p><p class="footer-contact-item__value"><a data-cfg="email-href" href="mailto:stay@kodayhomestay.com"><span data-cfg="email">stay@kodayhomestay.com</span></a></p></div></div></div>
@@ -302,18 +294,38 @@
   <script src="assets/js/analytics.js" defer></script>
   <script>
     document.getElementById('footer-year').textContent = new Date().getFullYear();
-    /* Show success message if redirected back after Netlify form submission */
-    if (window.location.search.includes('success=true')) {
-      var status = document.querySelector('.form-status');
-      var form   = document.querySelector('.booking-form');
-      if (status && form) {
-        form.style.display = 'none';
-        status.textContent = '✓ Thank you! Your enquiry has been sent. We\'ll be in touch within a few hours.';
-        status.className   = 'form-status form-success';
-        status.style.display = 'block';
-        status.setAttribute('role', 'alert');
+
+    /* Form → WhatsApp: collect fields and open a pre-filled WhatsApp message */
+    document.getElementById('booking-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name     = document.getElementById('name').value.trim();
+      var phone    = document.getElementById('phone').value.trim();
+      var email    = document.getElementById('email').value.trim();
+      var checkin  = document.getElementById('checkin').value;
+      var checkout = document.getElementById('checkout').value;
+      var guests   = document.getElementById('guests').value;
+      var room     = document.getElementById('room').value;
+      var message  = document.getElementById('message').value.trim();
+
+      if (!name || !email || !checkin) {
+        alert('Please fill in your name, email, and check-in date.');
+        return;
       }
-    }
+
+      var text = 'Hi Kodai Countryside Homestay! I would like to make a booking enquiry.' +
+        '\n\nName: ' + name +
+        (phone   ? '\nPhone: ' + phone : '') +
+        '\nEmail: ' + email +
+        '\nCheck-in: ' + checkin +
+        (checkout ? '\nCheck-out: ' + checkout : '') +
+        (guests   ? '\nGuests: ' + guests : '') +
+        (room     ? '\nPreference: ' + room : '') +
+        (message  ? '\nMessage: ' + message : '');
+
+      var waNum = (window.SITE_CONFIG && window.SITE_CONFIG.contact && window.SITE_CONFIG.contact.whatsapp_number)
+                  ? window.SITE_CONFIG.contact.whatsapp_number : '919962355660';
+      window.open('https://wa.me/' + waNum + '?text=' + encodeURIComponent(text), '_blank');
+    });
   </script>
 </body>
 </html>
