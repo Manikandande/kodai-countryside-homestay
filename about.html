@@ -60,9 +60,11 @@
     .ethos-item__icon { font-size: 2rem; margin-bottom: var(--space-sm); }
     .ethos-item h3 { font-size: 1.1rem; color: var(--color-bark); margin-bottom: var(--space-xs); }
     .ethos-item p  { font-size: 0.9rem; color: var(--color-smoke); }
+    .snapshot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); max-width: 900px; margin-inline: auto; }
     @media (max-width: 767px) {
-      .about-story { grid-template-columns: 1fr; gap: var(--space-lg); }
-      .ethos-grid  { grid-template-columns: 1fr; }
+      .about-story   { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .ethos-grid    { grid-template-columns: 1fr; }
+      .snapshot-grid { grid-template-columns: 1fr; }
     }
     @media (min-width: 768px) and (max-width: 1023px) {
       .ethos-grid { grid-template-columns: 1fr 1fr; }
@@ -162,7 +164,7 @@
           <p class="label">What awaits you</p>
           <h2 id="property-snapshot-heading">The Home at a Glance</h2>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);max-width:900px;margin-inline:auto;">
+        <div class="snapshot-grid">
           <div class="feature-card text-center" data-reveal>
             <div style="font-size:2rem;margin-bottom:var(--space-sm);" aria-hidden="true">🛏</div>
             <h3>2 Bedrooms</h3>

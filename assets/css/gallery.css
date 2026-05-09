@@ -79,10 +79,9 @@
 }
 
 /* Gallery filter hiding */
-.gallery-grid[data-filter="nature"]    .gallery-item:not([data-category="nature"]),
-.gallery-grid[data-filter="rooms"]     .gallery-item:not([data-category="rooms"]),
-.gallery-grid[data-filter="food"]      .gallery-item:not([data-category="food"]),
-.gallery-grid[data-filter="activities"].gallery-item:not([data-category="activities"]) {
+.gallery-grid[data-filter="exterior"] .gallery-item:not([data-category="exterior"]),
+.gallery-grid[data-filter="rooms"]    .gallery-item:not([data-category="rooms"]),
+.gallery-grid[data-filter="nearby"]   .gallery-item:not([data-category="nearby"]) {
   display: none;
 }
 
