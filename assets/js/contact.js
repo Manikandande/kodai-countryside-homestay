@@ -126,7 +126,7 @@
       var guests  = (form.querySelector('#guests') || {}).value || '';
       var room    = (form.querySelector('#room') || {}).value || '';
       var msg     = [
-        'Hello Kodai Homestay!',
+        'Hello Kodai Countryside Homestay!',
         'I would like to make a booking enquiry.',
         name    ? 'Name: ' + name : '',
         checkin ? 'Check-in: ' + checkin : '',

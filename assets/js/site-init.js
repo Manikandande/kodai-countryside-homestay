@@ -60,9 +60,9 @@
     /* ── Links ─────────────────────────────────────────────── */
     fill('[data-cfg="phone-href"]',    c.phone_tel ? 'tel:' + c.phone_tel : '#', 'href');
     fill('[data-cfg="email-href"]',    c.email ? 'mailto:' + c.email : '#',      'href');
-    fill('[data-cfg="wa-enquiry"]',    waBase + '?text=' + encodeURIComponent('Hello Kodai Homestay! I\'d like to enquire about a stay.'), 'href');
-    fill('[data-cfg="wa-booking"]',    waBase + '?text=' + encodeURIComponent('Hi Kodai Homestay! I would like to make a booking enquiry.'), 'href');
-    fill('[data-cfg="wa-fab"]',        waBase + '?text=' + encodeURIComponent('Hi Kodai Homestay! I\'d like to enquire about a stay.'), 'href');
+    fill('[data-cfg="wa-enquiry"]',    waBase + '?text=' + encodeURIComponent('Hello Kodai Countryside Homestay! I\'d like to enquire about a stay.'), 'href');
+    fill('[data-cfg="wa-booking"]',    waBase + '?text=' + encodeURIComponent('Hi Kodai Countryside Homestay! I would like to make a booking enquiry.'), 'href');
+    fill('[data-cfg="wa-fab"]',        waBase + '?text=' + encodeURIComponent('Hi Kodai Countryside Homestay! I\'d like to enquire about a stay.'), 'href');
 
     /* ── Social links ──────────────────────────────────────── */
     var igLink = document.querySelector('[data-cfg="instagram-href"]');
