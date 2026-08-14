@@ -98,7 +98,7 @@
       });
     }
 
-    function showCurrent() {
+    function showCurrent(animate) {
       var item = items[current];
       if (!item) return;
       lbImg.src = item.src;
@@ -107,6 +107,11 @@
       lbCounter.textContent = (current + 1) + ' / ' + items.length;
       lbPrev.disabled = current === 0;
       lbNext.disabled = current === items.length - 1;
+      if (animate) {
+        lbImg.classList.remove('is-animating');
+        void lbImg.offsetWidth; /* force reflow to restart animation */
+        lbImg.classList.add('is-animating');
+      }
     }
 
     function openAt(idx) {
@@ -126,8 +131,8 @@
       document.body.style.overflow = '';
     }
 
-    function prev() { if (current > 0) { current--; showCurrent(); } }
-    function next() { if (current < items.length - 1) { current++; showCurrent(); } }
+    function prev() { if (current > 0) { current--; showCurrent(true); } }
+    function next() { if (current < items.length - 1) { current++; showCurrent(true); } }
 
     lbClose.addEventListener('click', close);
     lbPrev.addEventListener('click', prev);

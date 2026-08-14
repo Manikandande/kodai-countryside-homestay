@@ -9,6 +9,7 @@
 
   /* Merge localStorage admin overrides on top of file config */
   var cfg = window.SITE_CONFIG || {};
+  var fileGallery = (cfg.images && cfg.images.gallery) ? cfg.images.gallery : null;
   try {
     var stored = localStorage.getItem('kodai_admin_config');
     if (stored) {
@@ -16,6 +17,11 @@
       cfg = deepMerge(cfg, override);
     }
   } catch (e) { /* ignore parse errors */ }
+  /* Gallery images always come from config.js — never from stale admin overrides */
+  if (fileGallery) {
+    if (!cfg.images) cfg.images = {};
+    cfg.images.gallery = fileGallery;
+  }
 
   function deepMerge(base, override) {
     var result = {};
